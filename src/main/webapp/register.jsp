@@ -20,7 +20,7 @@
 
 	<jsp:include page="header.jsp"></jsp:include>
 		<div class="container">
-			<form action="logincontroller" method="post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 myform">
+			<form action="register" method="post" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 myform">
 				
 				<div class="form-group">
 				
