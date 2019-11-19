@@ -54,7 +54,7 @@ public class login extends HttpServlet
 		}
 		catch(Exception e)
 		{
-			System.out.print("");
+			System.out.print(e);
 		}
 		
 		
