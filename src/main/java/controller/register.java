@@ -23,11 +23,11 @@ public class register extends HttpServlet
 		user user=new user();
 		user.setUsername(request.getParameter("username"));
 		user.setEmail(request.getParameter("email"));
-		user.setPassword(request.getParameter("password"));
+		user.setPassword(request.getParameter("password")); 
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoes", "root", "hrishi");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/shoes", "root", "root");
 	        PreparedStatement ps=con.prepareStatement("insert into user (username,email,password) values (?,?,?);");
 	        ps.setString(1, user.getUsername());
 	        ps.setString(2, user.getEmail());
