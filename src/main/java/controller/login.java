@@ -33,22 +33,19 @@ public class login extends HttpServlet
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/shoes", "root", "root");
-`			
+			
 			Statement stmt=con.createStatement();
 			
-			String sql="select * from user;";
+			String sql="select * from user where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
 			ResultSet rs=stmt.executeQuery(sql);
 			
-			while(rs.next())
+			if(rs.next())
 			{
-				if((rs.getString(2).equalsIgnoreCase(user.getUsername())&&(rs.getString(4).equalsIgnoreCase(user.getPassword()))))
-				{
-					pw.print("Welcome");
-				}
-				else
-				{
-					pw.print("Error");
-				}
+				pw.write("welcome");
+			}
+			else
+			{
+				pw.write("error");
 			}
 	        
 		}
