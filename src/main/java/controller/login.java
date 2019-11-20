@@ -36,7 +36,7 @@ public class login extends HttpServlet
 `			
 			Statement stmt=con.createStatement();
 			
-			String sql="select * from user";
+			String sql="select * from user;";
 			ResultSet rs=stmt.executeQuery(sql);
 			
 			while(rs.next())
