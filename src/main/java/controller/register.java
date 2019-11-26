@@ -18,7 +18,9 @@ import model.user;
 public class register extends HttpServlet
 {
       
-	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException 
+	
+	{
 
 		user user=new user();
 		user.setUsername(request.getParameter("username"));
@@ -27,18 +29,15 @@ public class register extends HttpServlet
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< HEAD
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/shoes", "root", "root");
-=======
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoes", "root", "root");
->>>>>>> branch 'master' of https://github.com/Hrishikesh-26/shoes-niit.git
-	        PreparedStatement ps=con.prepareStatement("insert into user (username,email,password) values (?,?,?);");
-	        ps.setString(1, user.getUsername());
-	        ps.setString(2, user.getEmail());
-	        ps.setString(3, user.getPassword());
-	        ps.executeUpdate();
-	        con.close();
-	        resp.sendRedirect("login.jsp");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoes", "root", "hrishi");
+			PreparedStatement ps=con.prepareStatement("insert into user (username,email,password,role) values(?,?,?,?);");
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPassword());
+			ps.setString(4, "user");
+			ps.executeUpdate();
+			con.close();
+			resp.sendRedirect("login.jsp");
 		} 
 		catch (Exception e) 
 		{
