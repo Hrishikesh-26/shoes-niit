@@ -13,41 +13,34 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <sql:setDataSource driver="com.mysql.jdbc.Driver"
-							url="jdbc:mysql://localhost:3306/shoes"
+							url="jdbc:mysql://35.232.120.71/shoes"
 							user="root"
-							password="hrishi"
+							password="root"
 							var="mydatasource" />
 		 
 	<sql:query var="data" dataSource="${mydatasource}">
 		select * from products
 	</sql:query>
 <div class="container">
-    <h3 class="h3">shopping Demo-1 </h3>
+    
     <div class="row">
     <c:forEach items="${data.rows}" var="row">
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
+                <br>
+                <br>
+                <br>
                     <a href="displayproduct.jsp?productid=${row.productid}">
                         <img  class="pic-1 col-lg-12 col-md-12 col-sm-12 col-xs-12" src="ImageServlet?productid=${row.productid}" class="img-responsive">
                     </a>
-                    <ul class="social">
-                        <li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                    <span class="product-new-label">${row.productname}</span>
-                    <span class="product-discount-label">20%</span>
+                   
+                
+                    
                 </div>
-                <ul class="rating">
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star"></li>
-                    <li class="fa fa-star disable"></li>
-                </ul>
+               
                 <div >
-                    <h3 class="title"><a href="#">${row.productname}</a></h3>
+                    <h3 class="title"><a href="#">${row.name}</a></h3>
                     <h3 class="title"><a href="#">Rs. ${row.price}</a></h3>
                 </div>
             </div>

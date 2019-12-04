@@ -25,8 +25,9 @@ public class AddProductController extends HttpServlet
 	{
 		products products=new products();
 		products.setName(req.getParameter("name"));
-		products.setCategory(req.getParameter("category"));
 		products.setPrice(Float.parseFloat(req.getParameter("price")));
+		products.setCategory(req.getParameter("category"));
+		
 		products.setBrand(req.getParameter("brand"));
 		products.setSize(Integer.parseInt(req.getParameter("size")));
 		products.setColour(req.getParameter("colour"));
@@ -38,11 +39,12 @@ public class AddProductController extends HttpServlet
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/shoes", "root", "hrishi");
-			PreparedStatement ps=con.prepareStatement("insert into products (name,category,price,brand,size,colour,quantity,description,image) values(?,?,?,?,?,?,?,?,?);");
+			Connection con=DriverManager.getConnection("jdbc:mysql://35.232.120.71/shoes", "root", "root");
+			PreparedStatement ps=con.prepareStatement("insert into products (name,price,category,brand,size,colour,quantity,description,image) values(?,?,?,?,?,?,?,?,?);");
 			ps.setString(1, products.getName());
-			ps.setString(2, products.getCategory());
-			ps.setFloat(3, products.getPrice());
+			ps.setFloat(2, products.getPrice());
+			ps.setString(3, products.getCategory());
+			
 			ps.setString(4, products.getBrand());
 			ps.setInt(5, products.getSize());
 			ps.setString(6, products.getColour());
@@ -51,7 +53,7 @@ public class AddProductController extends HttpServlet
 			ps.setBlob(9, is);
 			ps.executeUpdate();
 			con.close();
-			resp.sendRedirect("index.jsp");
+			resp.sendRedirect("displayproducts.jsp");
 		}
 		catch(Exception e)
 		{

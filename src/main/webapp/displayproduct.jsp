@@ -40,8 +40,8 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<sql:setDataSource driver="com.mysql.jdbc.Driver"
-							url="jdbc:mysql://34.67.195.30:3306/niitgae"
+<sql:setDataSource driver="com.mysql.jdbc.Driver"
+							url="jdbc:mysql://35.232.120.71/shoes"
 							user="root"
 							password="root"
 							var="mydatasource" />
@@ -63,7 +63,7 @@
 						 </div>
 					</div>
 					<div class=" col-md-4">
-						<h3 class="product-title">${row.productname}</h3>
+						<h3 class="product-title">${row.name}</h3>
 						<!-- 
 						<div class="rating">
 							<div class="stars">

@@ -17,9 +17,9 @@
 </head>
 <body>
 	<sql:setDataSource driver="com.mysql.jdbc.Driver"
-							url="jdbc:mysql://localhost:3306/shoes"
+							url="jdbc:mysql://35.232.120.71/shoes"
 							user="root"
-							password="hrishi"
+							password="root"
 							var="mydatasource" />
 		 
 	<sql:query var="data" dataSource="${mydatasource}">
@@ -62,7 +62,7 @@
 			</div>
 			<div class="form-group">
 				<label>Enter Description</label>
-				<input type="text" name="brand" class="form-control" placeholder="Enter description" />
+				<input type="text" name="description" class="form-control" placeholder="Enter description" />
 			</div>
 			<div class="form-group">
 				<label>Select Image</label>

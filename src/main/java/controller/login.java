@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.sun.mail.iap.Response;
 
 import model.user;
 
@@ -22,8 +25,6 @@ public class login extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		
-		PrintWriter pw=resp.getWriter();
-		
 		user user=new user();
 		
 		user.setUsername(req.getParameter("username"));
@@ -32,21 +33,22 @@ public class login extends HttpServlet
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/shoes", "root", "root");
+			Connection con=DriverManager.getConnection("jdbc:mysql://35.232.120.71/shoes", "root", "root");
+			PreparedStatement ps=con.prepareStatement("select * from user where username=? and password=?");
+			ps.setString(1, user.getUsername());
+			ps.setString(2, user.getPassword());
+			ResultSet rs=ps.executeQuery();
 			
-			Statement stmt=con.createStatement();
-			
-			String sql="select * from user where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
-			ResultSet rs=stmt.executeQuery(sql);
-			
+			HttpSession hs=req.getSession();
 			if(rs.next())
 			{
-				pw.write("welcome");
+				user.setUserid(rs.getInt("userid"));
+				user.setEmail(rs.getString("email"));
+				user.setRole(rs.getString("role"));
+				hs.setAttribute("user", user);
+				resp.sendRedirect("addproduct.jsp");
 			}
-			else
-			{
-				pw.write("error");
-			}
+			
 	        
 		}
 		catch(Exception e)
