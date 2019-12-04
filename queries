@@ -25,3 +25,7 @@ image longblob
 select * from user
 
 select * from products
+
+update user 
+set role='admin'
+where userid=1;
