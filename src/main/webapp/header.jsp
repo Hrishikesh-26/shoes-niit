@@ -17,7 +17,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Electo</a>
+  <a class="navbar-brand" href="#">SHOES</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,14 +31,15 @@
       <li class="nav-item">
         <a class="nav-link" href="displayproducts.jsp">Products</a>
       </li>
-      <c:if test="${user==null}">
+      
+      
 	      <li class="nav-item">
 	        <a class="nav-link" href="login.jsp">Login</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="register.jsp">Register</a>
 	      </li>
-      </c:if>
+      
       
       <c:if test="${user!=null}">
       	<c:if test="${user.role=='admin'}">
@@ -48,7 +49,7 @@
 	    </c:if>
 	
       	<li class="nav-item">
-    	    <a class="nav-link" href="login.jsp">Logout</a>
+    	    <a class="nav-link" href="logout.jsp">Logout</a>
       	</li>
      
       
